@@ -106,7 +106,7 @@ if($query->num_rows > 0)
 		$username = $row['user_name'];
 		$password = decrypt_key($row['user_pass']);
 		$password = encryptor('decrypt',$password);		
-		$data .= '/usr/sbin/useradd -p $(openssl passwd -1 '.$password.') -M '.$username.';'.PHP_EOL;
+		$data .= '/usr/sbin/useradd -p $(openssl passwd -1 '.$password.') -M '.$username.' --shell=/bin/false --no-create-home;'.PHP_EOL;
 	}
 }
 $location = '/usr/sbin/kpn/active.sh';
